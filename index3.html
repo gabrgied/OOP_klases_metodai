@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+<script type="text/javascript">
+//kuriam per es6 klase
+/*
+class Vehicle {
+constructor(wheelCount, speed) {
+  this.wheelCount=wheelCount;
+  this.speed=speed;
+}
+addSpeed() {
+  this.speed+= 10;
+  console.log(this.speed);
+}
+break() {
+  this.speed-= 5;
+  console.log(this.speed);
+}
+}
+
+class Car extends Vehicle {
+    constructor(wheelCount, speed) {
+        super(wheelCount, speed);
+    }
+  blink(){
+    console.log('blink blink');
+  }
+}
+
+const porche = new Car(4, 260);
+console.log(porche);
+porche.addSpeed();
+porche.break();
+porche.blink();
+
+//kuriam objekta per konstruktoriu
+
+const Vehicle = function (wheelCount, speed) {
+  this.wheelCount=wheelCount;
+  this.speed=speed;
+}
+
+Vehicle.prototype.addSpeed = function (){
+  this.speed+= 10;
+  console.log(this.speed);
+}
+Vehicle.prototype.break = function() {
+  this.speed-= 5;
+  console.log(this.speed);
+}
+
+const Car = function (name, wheelCount, speed) {
+Vehicle.call(this, wheelCount, speed);
+this.name=name;
+}
+
+Car.prototype = Object.create(Vehicle.prototype);
+const mercedes = new Car('Mercedes',4, 200);
+mercedes.addSpeed();
+mercedes.break();
+console.log(mercedes);
+*/
+// dabar - Vehicle klase ir Bicycle objektas naudojant Object.create
+
+const Vehicle = {
+  addSpeed() {
+    this.speed+= 10;
+    console.log(`after some improvements ${this.name} rides ${this.speed} hm/h`);
+  },
+  break() {
+    this.speed-= 5;
+    console.log(`unfortunately goods things don't last, so now ${this.name} rides ${this.speed} hm/h, but it's still worth riding`);
+  },
+  properties(wheelCount, speed) {
+    this.wheelCount=wheelCount;
+    this.speed=speed;
+  }
+};
+
+const Bicycle = Object.create(Vehicle);
+Bicycle.properties = function (name, wheelCount, speed) {
+  Vehicle.properties.call(this, wheelCount, speed);
+  this.name=name;
+}
+
+Bicycle.beep = function () {
+  if ((this.speed)>20) {
+  console.log(`Beep beep! I'm riding more than 20 km/h!`);
+}
+}
+
+
+const pantera = Object.create(Bicycle);
+pantera.properties('Pantera', 2, 20);
+console.log(pantera);
+pantera.addSpeed();
+pantera.break();
+pantera.beep();
+
+</script>
+  </body>
+</html>

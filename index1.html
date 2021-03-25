@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+<script>
+
+  function Notebook(totalPages, usedPages){
+  	this.totalPages = totalPages;
+    this.usedPages = usedPages;
+  }
+
+    Notebook.prototype.use = function (pages){
+    this.usedPages=this.usedPages+pages;
+    console.log(this.usedPages);
+  }
+
+  Notebook.prototype.leftPages = function (){
+    console.log(this.totalPages - this.usedPages);
+  }
+
+  const first = new Notebook(50, 6);
+  const second = new Notebook(85, 1);
+
+  console.log(first);
+  console.log(second);
+
+console.log(first.use(10));
+console.log(first.leftPages());
+
+console.log(second.use(0));
+console.log(second.leftPages());
+
+
+  </script>
+  </body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+<script>
+  class Notebook {
+    constructor(totalPages, usedPages){
+      this.totalPages=totalPages;
+      this.usedPages=usedPages;
+  }
+  use(pages) {
+    this.usedPages+=pages;
+    console.log(this.usedPages);
+  }
+  leftPages(){
+    console.log(this.totalPages-this.usedPages);
+  }
+  get getInfo() {
+    console.log(`this notebook has a total pages of ${this.totalPages}`)
+  }
+  set add(pages) {
+      this.totalPages=this.totalPages+pages;
+      console.log(this.totalPages+pages);
+  }
+}
+const first = new Notebook(50, 6);
+const second = new Notebook(85, 1);
+
+  console.dir(first);
+  console.dir(second);
+
+  first.add=5;
+  first.getInfo;
+
+const notebook = {
+  use(pages) {
+  this.usedPages+=pages;
+  console.log(this.usedPages);
+  },
+  leftPages(){
+    console.log(this.totalPages-this.usedPages);
+  },
+  info(totalPages, usedPages){
+    this.totalPages = totalPages;
+    this.usedPages = usedPages;
+  }
+}
+ const notebook1 = Object.create(notebook);
+ notebook1.info(10,2);
+ notebook1.use(2);
+ notebook1.leftPages();
+ console.log(notebook1);
+
+
+    </script>
+    </body>
+  </html>
